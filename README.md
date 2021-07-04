@@ -2,6 +2,8 @@
 
 Widgets on curved 3D surfaces or crazier things.
 
+Video Presentation - https://www.youtube.com/watch?v=_T0I1eMeE6U
+
 ![Imgur](http://i.imgur.com/gx1zckw.gif)
 
 Includes:
@@ -11,7 +13,7 @@ Includes:
 
 Requirements:
 
- * UE 4.20
+ * UE 4.26
  * UV hit testing project setting (Physics > Optimization > Support UV From Hit Results) ticked
 
 Installation:
