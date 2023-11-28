@@ -21,6 +21,7 @@
 #include "Runtime/UMG/Public/Blueprint/UserWidget.h"
 #include "Runtime/RenderCore/Public/RenderingThread.h"
 #include "Components/SceneComponent.h"
+#include <Engine.h>
 
 
 DECLARE_CYCLE_STAT(TEXT("3DHitTesting"), STAT_Slate3DHitTesting, STATGROUP_Slate);
@@ -328,7 +329,7 @@ void UMeshWidgetComponent::ApplyComponentInstanceData(FMeshWidgetComponentInstan
 #if WITH_EDITORONLY_DATA
 void UMeshWidgetComponent::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
 {
-	UProperty* Property = PropertyChangedEvent.MemberProperty;
+	FProperty* Property = PropertyChangedEvent.MemberProperty;
 
 	if( Property && PropertyChangedEvent.ChangeType != EPropertyChangeType::Interactive )
 	{
@@ -444,7 +445,7 @@ void UMeshWidgetComponent::SetSlateWidget( const TSharedPtr<SWidget>& InSlateWid
 void UMeshWidgetComponent::UpdateWidget()
 {
 	// Don't do any work if Slate is not initialized
-	if ( FSlateApplication::IsInitialized() )
+	if ( FSlateApplication::IsInitialized() && GetWorld()->IsGameWorld())
 	{
 		TSharedPtr<SWidget> NewSlateWidget;
 		if (Widget)
